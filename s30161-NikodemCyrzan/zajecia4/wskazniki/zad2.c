@@ -3,8 +3,7 @@
 
 typedef int (*FUNC)(int, int);
 
-int forAll(int *array, int elementsCount, FUNC func)
-{
+int forAll(int *array, int elementsCount, FUNC func) {
     int v, i;
 
     if (elementsCount <= 0)
@@ -17,13 +16,11 @@ int forAll(int *array, int elementsCount, FUNC func)
     return v;
 }
 
-int min(int a, int b)
-{
+int min(int a, int b) {
     return (a < b) ? a : b;
 }
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     int *arr = malloc(4 * sizeof(int));
     int c = 4;
 
