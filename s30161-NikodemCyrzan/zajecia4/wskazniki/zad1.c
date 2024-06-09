@@ -43,6 +43,7 @@ int main(int argc, char **argv) {
     for (i = 1; i < elementCount; i++)
         v = (f[functionId])(v, numbers[i]);
 
+    free(numbers);
     printf("%d", v);
 
     return 0;
