@@ -1,23 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int maximum(int a, int b)
-{
+int maximum(int a, int b) {
     return (a >= b) ? a : b;
 }
 
-int minimum(int a, int b)
-{
+int minimum(int a, int b) {
     return (a <= b) ? a : b;
 }
 
-int sum(int a, int b)
-{
+int sum(int a, int b) {
     return a + b;
 }
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     int i, functionId, elementCount, v;
     int *numbers;
     int (*f[3])(int, int);
@@ -26,8 +22,7 @@ int main(int argc, char **argv)
     f[1] = minimum;
     f[2] = sum;
 
-    if (argc != 3)
-    {
+    if (argc != 3) {
         printf("Podano %d argumentów. Oczekiwano: 2", argc - 1);
         return 0;
     }
