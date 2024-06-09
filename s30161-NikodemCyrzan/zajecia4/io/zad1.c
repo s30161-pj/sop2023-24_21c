@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int *readFromStandardInput()
-{
+int *readFromStandardInput() {
     int size, input = -1, i = 0;
     int *numbers;
 
@@ -10,8 +9,7 @@ int *readFromStandardInput()
     numbers = malloc((size + 1) * sizeof(int));
     numbers[0] = size;
 
-    for (i = 1; i <= size; i++)
-    {
+    for (i = 1; i <= size; i++) {
         scanf("%d", &input);
         numbers[i] = input;
     }
@@ -19,16 +17,14 @@ int *readFromStandardInput()
     return numbers;
 }
 
-int *readFromFile(char **argv)
-{
+int *readFromFile(char **argv) {
     FILE *file = NULL;
     int size, i;
     int *numbers;
 
     file = fopen(argv[1], "r");
 
-    if (file == NULL)
-    {
+    if (file == NULL) {
         printf("Plik \"%s\" nie istnieje", argv[1]);
         return 0;
     }
@@ -53,8 +49,7 @@ int main(int argc, char **argv)
         numbers = readFromStandardInput();
     else if (argc == 2)
         numbers = readFromFile(argv);
-    else
-    {
+    else {
         printf("Podano %d argumentów. Oczekiwano: 1 lub brak", argc - 1);
         return 0;
     }
