@@ -1,14 +1,15 @@
 # Instalacja systemu operacyjnego Linux Debian bez środowiska graficznego na maszynie wirtualnej.
 
-### Pobranie ISO systemu Debian12 ze strony https://www.debian.org/distrib.
+### Pobranie ISO instalatora systemu Debian12 ze strony https://www.debian.org/distrib.
 
 ### Upewnienie się że na komputerze jest włączona wirtualizacja.
 
 #### Jak to sprawdzić?
 
-Należy wejść w ustawienia BIOS i znaleźć opcję `Virtualization`. Jeśli jest wyłączona, włączyć ją.
+Można wejść do menedżera zadań i w zakładce wydajność z wybranym CPU znaleźć pole `Wirtualizacja`.
+Jeśli nie jest włączona, należy wejść w ustawienia BIOS i znaleźć opcję `Virtualization` i włączyć ją.
 
-## 1. Tworzenie obrazu nowej maszyny wirtualnej
+## 1. Tworzenie nowej maszyny wirtualnej
 
 ### W programie VirtualBox naciśnięcie przycisku `Nowa`, w celu stowrzenia obrazu nowej maszyny wirtualnej.
 
@@ -52,6 +53,22 @@ Prawodpodobnie (w przypadku systemu Windows) na komputerze uruchomione jest Hype
 
 W skutku HyperV zawłaszcza instrukcje wirtualizacyjne, przez co inne oprogramowanie wirtualizacyjne nie jest w stanie wykorzystywać tych instrukcji i wirtualizacja nie odbywa się sprzętowo, a poprzez software. W rezultacie maszyny działają wolniej.
 
+Aby wyłączyć HyperV, należy uruchomić terminal z uprawnieniami
+administratora i wywołać polecenie:
+
+```terminal
+bcdedit /set hypervisorlaunchtype off
+```
+
+Aby ponownie włączyć:
+
+```terminal
+bcdedit /set hypervisorlaunchtype on
+```
+
+Po każdej zmianie ustawień trzeba wykonać restart by zobaczyć wyniki,
+ponieważ opcja jest ustawiana podczas uruchamiania systemu.
+
 #### Skip Unattended Installation
 
 `Unattended Installation` polega na skonfigurowaniu instalacji systemu przed uruchomieniem maszyny wirtualnej. VirtualBox wykona konfigurację automatycznie.
@@ -84,6 +101,8 @@ Ilość pamięci RAM która zostanie przydzielona maszynie.
 
 Należy sprawdzić wymagania sprzętowe danego systemu operacyjnego. W przypadku systemu Debian12 minimalna wartość to 256 MB, a rekomendowana 512 MB.
 
+Źródło: https://www.debian.org/releases/bullseye/amd64/ch03s04.en.html
+
 > Mój wybór
 >
 > Na czas instalacji `1024 MB`, aby potencjalnie przyśpieszyć ten proces. Po instalacji zmniejszyłem wartość na zalecane `512 MB`, ponieważ system instalowany był jedynie w celu nauki instalacji, więc nie było wymagane uwzględnienie wymagań sprzętowcyh innych serwisów, takich jak na przykład serwer HTTP.
@@ -113,7 +132,7 @@ Należy zastanowić się w jakich celach wykorzystywany będzie system i czy wym
 EFI jest interfejsem między oprogramowaniem, a sprzętem komputerowym i jest następcą BIOS. W porównaiu do poprzednika ma zalety takie jak:
 
 -   nieograniczone adresowanie pamięci RAM, gdzie w BIOS możliwe było zaadresowanie jedynie 1MB
--   obsługa tablicy partycji GPT, która ubługuje więcej partycji i większe dyski niż MBR
+-   obsługa tablicy partycji GPT, która obsługuje więcej partycji i większe dyski niż MBR
 
 > Mój wybór
 >
@@ -142,7 +161,7 @@ W wymaganiach sprzętowych systemu istnieje zapiska o wymaganej ilości pamięci
 -   VDI (VirtualBox Disk Image) - rozwiązanie firmy VirtualBox
 -   VHD (Virtual Hard Disk) - rozwiązanie firmy Microsoft, wykorzystywane w HyperV i Azure
 -   VMDK (Virtual Machine Disk) - rozwiązanie firmy VMware
--   HDD (równoległy dysk twardy) - fizyczny dysk, wykorzystywane w celu uzyskania największej możliwej wydajności
+-   HDD (Parallels Hard Disk) - format używany przez Parallels, wykorzystywane przez oprogramowanie do wirtualizacji Parallels działające głównie na MacOS
 -   QCOW (QEMU Copy-On-Write) - format z opcją Copy-On-Write wykorzystywany przez emulator QEMU
 -   QED (QEMU enhanced disk) - format wykorzystywany przez emulator QEMU
 
