@@ -161,7 +161,7 @@ W wymaganiach sprzętowych systemu istnieje zapiska o wymaganej ilości pamięci
 -   VDI (VirtualBox Disk Image) - rozwiązanie firmy VirtualBox
 -   VHD (Virtual Hard Disk) - rozwiązanie firmy Microsoft, wykorzystywane w HyperV i Azure
 -   VMDK (Virtual Machine Disk) - rozwiązanie firmy VMware
--   HDD (Parallels Hard Disk) - format używany przez Parallels, wykorzystywane przez oprogramowanie do wirtualizacji Parallels działające głównie na MacOS
+-   HDD (Parallels Hard Disk) - format wykorzystywany przez oprogramowanie do wirtualizacji Parallels działające głównie na MacOS
 -   QCOW (QEMU Copy-On-Write) - format z opcją Copy-On-Write wykorzystywany przez emulator QEMU
 -   QED (QEMU enhanced disk) - format wykorzystywany przez emulator QEMU
 
